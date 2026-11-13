@@ -1,0 +1,19 @@
+
+services:
+  hbase:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: renewable-hbase
+    hostname: hbase
+    ports:
+      - "16010:16010"
+      - "16000:16000"
+      - "16020:16020"
+      - "9090:9090"
+    volumes:
+      - hbase_data:/data
+    restart: unless-stopped
+
+volumes:
+  hbase_data:
